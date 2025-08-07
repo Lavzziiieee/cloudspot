@@ -1,1 +1,18 @@
-styles/globals.css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+input, button {
+  padding: 10px;
+  font-size: 1rem;
+}
+button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.8;
+}
