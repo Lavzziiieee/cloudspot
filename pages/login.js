@@ -1,1 +1,47 @@
-pages/login.js
+
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../lib/firebase";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const auth = getAuth(app);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/dashboard");
+    } catch (err) {
+      setError("Login failed. Check your credentials.");
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: 400, margin: "50px auto" }}>
+      <h2>Login to Cloudspot</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        /><br /><br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        /><br /><br />
+        <button type="submit">Login</button>
+      </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </div>
+  );
+}
