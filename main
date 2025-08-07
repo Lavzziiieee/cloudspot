@@ -1,0 +1,17 @@
+cloudspot/
+├── components/
+│   └── Layout.js
+├── lib/
+│   └── firebase.js
+├── pages/
+│   ├── index.js
+│   ├── login.js
+│   ├── signup.js
+│   └── dashboard.js
+├── public/
+│   └── logo.png (optional)
+├── styles/
+│   └── globals.css
+├── .env.local
+├── package.json
+├── next.config.js
